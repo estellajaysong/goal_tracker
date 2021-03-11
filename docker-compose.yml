@@ -18,6 +18,7 @@ services:
       - "8001:8000"
     depends_on:
       - db
+    # entrypoint: /docker_entrypoint.sh
   client:
     build:
       context: ./client
