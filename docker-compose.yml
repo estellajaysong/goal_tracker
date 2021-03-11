@@ -9,15 +9,15 @@ services:
       - POSTGRES_PASSWORD=postgres
     volumes:
       - db_data:/var/lib/postgresql/data/
-  web:
+  app:
     build: .
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/code
     ports:
       - "8001:8000"
-    # depends_on:
-    #   - db
+    depends_on:
+      - db
   client:
     build:
       context: ./client
